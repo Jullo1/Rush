@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
 
         if (punchCD < 0.35f && !isTakingDamage) //is punching, velocity = 0, and destroys enemy
         {
-            _rb.velocity = Vector3.zero;
+            _rb.linearVelocity = Vector3.zero;
 
             if (punchCD < 0.2f) //more precise for destroying enemy
             {
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
     {
         if (!isTakingDamage && !introActive && punchCD > 0.25f)
         {
-            _rb.velocity = new Vector3(DirX * speed, DirY * speed, 0);
+            _rb.linearVelocity = new Vector3(DirX * speed, DirY * speed, 0);
             _anim.SetFloat("DirX", DirX);
             _anim.SetFloat("DirY", DirY);
 
@@ -187,7 +187,7 @@ public class Player : MonoBehaviour
             _anim.SetTrigger("Damage");
             _audio.clip = takeDamage;
             _audio.Play();
-            _rb.velocity = new Vector3(-10f, Random.Range(-4f, 4f), 0f);
+            _rb.linearVelocity = new Vector3(-10f, Random.Range(-4f, 4f), 0f);
         }
     }
 
